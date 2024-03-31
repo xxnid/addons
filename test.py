@@ -21,7 +21,7 @@ import speedtest
 from . import *
 
 
-@ultroid_cmd(pattern="test ?(.*)")
+@ultroid_cmd(pattern="test( (*.)|?)",
 async def _(event):
     input_str = event.pattern_match.group(1)
     as_document = None
@@ -29,7 +29,7 @@ async def _(event):
         as_document = False
     elif input_str == "file":
         as_document = True
-    xx = await event.eor("`Calculating ur Ultroid Server Speed. Please wait!`")
+    xx = await event.eor("`Calculating Server Speed. Please wait!`")
     start = datetime.now()
     s = speedtest.Speedtest()
     s.get_best_server()
